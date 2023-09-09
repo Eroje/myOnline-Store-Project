@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+import { Inventory } from '../features/inventory/Inventory.js';
+import { CurrencyFilter } from '../features/currencyFilter/CurrencyFilter.js';
+// Import the Cart component here.
+
+// Render the Cart component below <Inventory />
+export const App = (props) => {
+
+  const { state, dispatch } = props;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-         Hello World!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <CurrencyFilter
+        currencyFilter={state.currencyFilter}
+        dispatch={dispatch}
+      />
+
+      <Inventory
+        inventory={state.inventory}
+        currencyFilter={state.currencyFilter}
+        dispatch={dispatch}
+      />
+
     </div>
   );
-}
-
-export default App;
+};

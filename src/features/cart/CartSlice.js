@@ -1,3 +1,4 @@
+// AddItem Action Creator
 export const addItem = (itemToAdd) => {
     return {
       type: 'cart/addItem',
@@ -9,11 +10,14 @@ export const addItem = (itemToAdd) => {
   export const changeItemQuantity = (name, newQuantity) => {
     return {
     type: 'cart/changeItemQuantity',
-    payload: {name, newQuantity},
+    payload: {
+        name: name, 
+        newQuantity: newQuantity
+        }
     };
   };
   
-  
+  // Reducer to handles the action creator functions
   const initialCart = {};
   export const cartReducer = (cart = initialCart, action) => {
     switch (action.type) {
